@@ -4,7 +4,7 @@ from django.urls import reverse, reverse_lazy
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from accountapp.models import HelloWorld
 
@@ -38,4 +38,7 @@ class AccountCreateView(CreateView):
     # reverse_lazy는 class 에서 사용
     template_name = 'accountapp/create.html'
 
-
+class AccountDetailView(DetailView):
+    model = User
+    context_object_name = 'target_user'
+    template_name = 'accountapp/detail.html'
